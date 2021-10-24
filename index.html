@@ -1,2 +1,33 @@
-<h1>Under Construction</h1>
-<h2>Check back soon!</h2>
+<!DOCTYPE html>
+<html style="height:100%">
+	<head>
+		<title>just a level editor</title>
+	</head>
+	<body onresize="adjustScreen()" style="height:100%; margin:0; overflow:hidden; background:#EEEEEE; font-family:monospace">
+		<span id="info">
+			[INFO]<br>
+			Width: <span id="lvlWidth">10</span><br>
+			Height: <span id="lvlHeight">9</span><br>
+			Left Click: <span id="selectedBlock0">Solid Block</span><br>
+			Right Click: <span id="selectedBlock1">Empty Space</span><br><br>
+		</span>
+		<span id="control">
+			[CONTROL]<br>
+			LMB & RMB: Place block<br>
+			LMB & RMB + [shift]: Move player to cursor<br>
+			[,] & [.]: Cycle LMB block type<br>
+			[,] & [.] + [shift]: Cycle RMB block type<br>
+			[-] & [+]: Alter level width<br>
+			[-] & [+] + [shift]: Alter level height<br>
+			[G]: Toggle god mode<br>
+			[I]: Toggle info display<br>
+			[C]: Toggle control display<br>
+			[E]: Export level data<br>
+			[E] + [shift]: Import level data
+		</span>
+		<canvas id="playerLayer" style="position:absolute; background:#FFFFFF"></canvas>
+		<canvas id="levelLayer" style="position:absolute"></canvas>
+		<textarea style="opacity: .01; height:0; position:absolute; z-index: -1; display:none" id="exportArea">export text</textarea>
+	</body>
+	<script src="main.js"></script>
+</html>
