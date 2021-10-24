@@ -1,3 +1,9 @@
+0.13 - The Time Update
+> Added 3 new blocks
+  - Time Slow Block, which slows the game down to 0.5x speed
+  - Time Normal Block, which returns the game to normal speed
+  - Time Fast Block, which speeds up the game to 2x speed
+
 0.12
  > Added Death Block+, which kills you, even with god mode being on
 
