@@ -31,7 +31,7 @@ var level = [
 	[1,1,1,1,1,1,1,1,1]
 ];
 const hasHitbox = [1,5];
-const blockName = ["Empty Space","Solid Block","Death Block","Check Point","Activated Check Point (Unavailable)","Bounce Block","Gravity Up Block","Gravity Down Block","Fake Block"];
+const blockName = ["Empty Space","Solid Block","Death Block","Check Point","Activated Check Point (Unavailable)","Bounce Block","Gravity Up Block","Gravity Down Block","Fake Block","Death Block+"];
 const bannedBlock = [];
 
 id("levelLayer").addEventListener("mousedown", function(input){
@@ -342,6 +342,10 @@ function nextFrame(timeStamp) {
 		if (isTouching("any",2) && !player.godMode) {
 			respawn();
 		}
+		// death block+
+		if (isTouching("any",9)) {
+			respawn();
+		}
 		// key input
 		if (control.up && player.canJump) player.yv = -Math.sign(player.g)*200;
 		if (control.left) player.xv = -100;
@@ -399,6 +403,9 @@ function drawLevel() {
 					break;
 				case 8:
 					lL.fillStyle = "#000000";
+					break;
+				case 9:
+					lL.fillStyle = "#FFFF00";
 					break;
 				default:
 					lL.fillStyle = "#00000000";
@@ -470,6 +477,18 @@ function drawLevel() {
 						lL.lineTo(xb+(blockSize-blockSize/5)/2+blockSize*i/10,yb+blockSize-blockSize/5-blockSize/25*6);
 						lL.stroke();
 					}
+					break;
+				case 9:
+					lL.strokeStyle = "#000000";
+					lL.beginPath();
+					lL.moveTo(xb+blockSize/25*3,yb+blockSize/25*3);
+					lL.lineTo(xb+blockSize-blockSize/25*3,yb+blockSize-blockSize/25*3);
+					lL.stroke();
+
+					lL.beginPath();
+					lL.moveTo(xb+blockSize/25*3,yb+blockSize-blockSize/25*3);
+					lL.lineTo(xb+blockSize-blockSize/25*3,yb+blockSize/25*3);
+					lL.stroke();
 					break;
 			}
 		}
