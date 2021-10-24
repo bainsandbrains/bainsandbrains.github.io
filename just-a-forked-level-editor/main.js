@@ -31,7 +31,7 @@ var level = [
 	[1,1,1,1,1,1,1,1,1]
 ];
 const hasHitbox = [1,5];
-const blockName = ["Empty Space","Solid Block","Death Block","Check Point","Activated Check Point (Unavailable)","Bounce Block","Gravity Up Block","Gravity Down Block","Fake Block","Death Block+"];
+const blockName = ["Empty Space","Solid Block","Death Block","Check Point","Activated Check Point (Unavailable)","Bounce Block","Gravity Up Block","Gravity Down Block","Fake Block","Death Block+","Time Slow Block","Time Normal Block","Time Fast Block"];
 const bannedBlock = [];
 
 id("levelLayer").addEventListener("mousedown", function(input){
@@ -346,6 +346,16 @@ function nextFrame(timeStamp) {
 		if (isTouching("any",9)) {
 			respawn();
 		}
+		// time speed
+		if (isTouching("any",10)) {
+			gameSpeed = 0.5
+		}
+		if (isTouching("any",11)) {
+			gameSpeed = 1
+		}
+		if (isTouching("any",12)) {
+			gameSpeed = 2
+		}
 		// key input
 		if (control.up && player.canJump) player.yv = -Math.sign(player.g)*200;
 		if (control.left) player.xv = -100;
@@ -406,6 +416,15 @@ function drawLevel() {
 					break;
 				case 9:
 					lL.fillStyle = "#FFFF00";
+					break;
+				case 10:
+					lL.fillStyle = "#FF00FF88";
+					break;
+				case 11:
+					lL.fillStyle = "#FF007F88";
+					break;
+				case 12:
+					lL.fillStyle = "#7F00FF88";
 					break;
 				default:
 					lL.fillStyle = "#00000000";
@@ -490,6 +509,105 @@ function drawLevel() {
 					lL.lineTo(xb+blockSize-blockSize/25*3,yb+blockSize/25*3);
 					lL.stroke();
 					break;
+				case 10:
+					lL.strokeStyle = "#44004488";
+      					lL.lineWidth = blockSize / 25;
+      					lL.beginPath();
+      					lL.arc(
+        					xb + blockSize / 2,
+        					yb + blockSize / 2,
+        					blockSize / 2 - (blockSize / 25) * 3,
+        					0,
+        					Math.PI * 2
+      					);
+      					lL.moveTo(xb + blockSize / 2, yb + blockSize / 2);
+      					lL.lineTo(
+        					xb +
+          					blockSize / 2 +
+          					(blockSize / 2 - (blockSize / 25) * 3) * Math.cos(Math.PI / 4),
+        					yb +
+          					blockSize / 2 -
+          					(blockSize / 2 - (blockSize / 25) * 3) * Math.sin(Math.PI / 4)
+      					);
+      					lL.stroke();
+      					for (let i = 1; i < 3; i++) {
+        					lL.beginPath();
+        					lL.arc(
+          						xb + blockSize / 2,
+          						yb + blockSize / 2,
+          						blockSize / 2 - (blockSize / 25) * 3 - (blockSize / 25) * 3 * i,
+          						(Math.PI * 3) / 2,
+          						(Math.PI * 7) / 4
+        					);
+        					lL.stroke();
+      					}
+      					break;
+				case 11:
+					lL.strokeStyle = "#66006688";
+      					lL.lineWidth = blockSize / 25;
+      					lL.beginPath();
+      					lL.arc(
+        					xb + blockSize / 2,
+        					yb + blockSize / 2,
+        					blockSize / 2 - (blockSize / 25) * 3,
+        					0,
+        					Math.PI * 2
+      					);
+      					lL.moveTo(xb + blockSize / 2, yb + blockSize / 2);
+      					lL.lineTo(
+        					xb +
+          					blockSize / 2 +
+          					(blockSize / 2 - (blockSize / 25) * 3) * Math.cos(0),
+        					yb +
+          					blockSize / 2 -
+          					(blockSize / 2 - (blockSize / 25) * 3) * Math.sin(0)
+      					);
+      					lL.stroke();
+      					for (let i = 1; i < 3; i++) {
+        					lL.beginPath();
+        					lL.arc(
+         						xb + blockSize / 2,
+          						yb + blockSize / 2,
+          						blockSize / 2 - (blockSize / 25) * 3 - (blockSize / 25) * 3 * i,
+          						(Math.PI * 3) / 2,
+          						Math.PI * 2
+        					);
+        					lL.stroke();
+      					}
+      					break;
+				case 12:
+					lL.strokeStyle = "#88008888";
+      					lL.lineWidth = blockSize / 25;
+      					lL.beginPath();
+      					lL.arc(
+        					xb + blockSize / 2,
+        					yb + blockSize / 2,
+        					blockSize / 2 - (blockSize / 25) * 3,
+        					0,
+        					Math.PI * 2
+      					);
+      					lL.moveTo(xb + blockSize / 2, yb + blockSize / 2);
+      					lL.lineTo(
+        					xb +
+          					blockSize / 2 +
+          					(blockSize / 2 - (blockSize / 25) * 3) * Math.cos(-Math.PI / 2),
+        					yb +
+          					blockSize / 2 -
+          					(blockSize / 2 - (blockSize / 25) * 3) * Math.sin(-Math.PI / 2)
+      					);
+      					lL.stroke();
+      					for (let i = 1; i < 3; i++) {
+        					lL.beginPath();
+        					lL.arc(
+          						xb + blockSize / 2,
+          						yb + blockSize / 2,
+          						blockSize / 2 - (blockSize / 25) * 3 - (blockSize / 25) * 3 * i,
+          						(Math.PI * 3) / 2,
+          						(Math.PI * 5) / 2
+        					);
+        					lL.stroke();
+      					}
+      					break;
 			}
 		}
 	}
