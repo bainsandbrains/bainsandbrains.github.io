@@ -6,7 +6,7 @@
  > Made Activated Check Points available in the level editor
 
 0.10
- > Unforked version
+ > Unforked version made by TheTastyPi
  > 8 original blocks
   - Empty Space, which does nothing
   - Solid Block, which you can stand on
