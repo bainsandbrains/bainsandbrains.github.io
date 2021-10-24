@@ -1,0 +1,18 @@
+0.12
+ > Added Death Block+, which kills you, even with god mode being on
+
+0.11
+ > Added Fake Blocks, which look like Solid Blocks, but behave like Empty Spaces
+ > Made Activated Check Points available in the level editor
+
+0.10
+ > Unforked version
+ > 8 original blocks
+  - Empty Space, which does nothing
+  - Solid Block, which you can stand on
+  - Death Block, which kills you, unless you have god mode
+  - Check Point, which saves your progress upon dying
+  - Activated Check Point (Unavailable), which is the activated version of the Check Point
+  - Bounce Block, which bounces you to new heights
+  - Gravity Up Block, which makes you fall upward
+  - Gravity Down Block, which makes you fall downward
